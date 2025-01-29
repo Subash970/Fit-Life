@@ -2,10 +2,15 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
 
 const controller = require("./controllers/controller.js");
 
 const app = express();
+
+app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 //Environment variables
 dbURI = process.env.dbURI;
