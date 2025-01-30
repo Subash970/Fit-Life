@@ -34,3 +34,7 @@ MongoDB();
 //app routes
 
 app.get("/", controller.Home);
+
+//auth routes
+app.get("/user/login", controller.Login);
+app.get("/user/signup", controller.Signup);
