@@ -1,7 +1,7 @@
 const Index = () => {
   return (
     <>
-      <h1>Home Screen</h1>
+      <p className="h1 text-white bg-dark text-center">Home Screen</p>
     </>
   );
 };
