@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const jwt = require("jsonwebtoken");
 
 const controller = require("./controllers/controller.js");
 
@@ -34,7 +33,3 @@ MongoDB();
 //app routes
 
 app.get("/", controller.Home);
-
-//auth routes
-app.get("/user/login", controller.Login);
-app.get("/user/signup", controller.Signup);
