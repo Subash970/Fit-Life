@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const controller = require("./controllers/controller.js");
+const authController = require("./controllers/authController.js");
 
 const app = express();
 
@@ -33,3 +34,7 @@ MongoDB();
 //app routes
 
 app.get("/", controller.Home);
+
+//auth routes
+app.get("/users/signup", authController.Signup);
+app.get("/users/login", authController.Login);
