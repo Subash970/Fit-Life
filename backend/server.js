@@ -24,6 +24,7 @@ const MongoDB = async () => {
     console.log("Connection established with MongoDB");
   } catch (err) {
     setTimeout(() => {
+      console.log("Retrying in 5 seconds");
       MongoDB();
     }, 5000);
   }
@@ -36,5 +37,5 @@ MongoDB();
 app.get("/", controller.Home);
 
 //auth routes
-app.get("/users/signup", authController.Signup);
-app.get("/users/login", authController.Login);
+app.post("/users/signup", authController.Signup);
+app.post("/users/login", authController.Login);

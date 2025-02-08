@@ -1,9 +1,8 @@
-const { model } = require("mongoose");
-const Users = require("../models/Users");
 const jwt = require("jsonwebtoken");
+const Users = require("../models/Users.js");
 
 const createToken = (_id) => {
-  return jwt.sign(_id, process.env.SECRET_KEY);
+  return jwt.sign({ _id }, process.env.SECRET_KEY);
 };
 
 const Login = async (req, res) => {
@@ -18,7 +17,7 @@ const Login = async (req, res) => {
     const token = createToken(user._id);
     res.status(200).json({ token, msg: "Login Sucessfull" });
   } catch (err) {
-    res.status(400).json({ msg: res.msg });
+    res.status(400).json({ msg: err.message });
   }
 };
 
@@ -36,7 +35,7 @@ const Signup = async (req, res) => {
     const token = createToken(user._id);
     res.status(200).json({ msg: "Signed in", token });
   } catch (err) {
-    res.status(400).json({ msg: err.msg });
+    res.status(400).json({ msg: err.message });
   }
 };
 

@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 //components
 import Nav from "./pages/components/Nav";
-
 //pages
 import Index from "./pages/Index";
 

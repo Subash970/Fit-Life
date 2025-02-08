@@ -60,12 +60,10 @@ userSchema.statics.login = async function (email, password) {
 
     return user;
   } catch (err) {
-    throw new Error(err.messagex);
+    throw new Error(err.message);
   }
 };
 
 const Users = mongoose.model("Users", userSchema);
 
-module.exports = {
-  Users,
-};
+module.exports = Users;
