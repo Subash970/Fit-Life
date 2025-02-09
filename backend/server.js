@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const controller = require("./controllers/controller.js");
 const authController = require("./controllers/authController.js");
+const requireAuth = require("./middleware/middleware.js");
 
 const app = express();
 
