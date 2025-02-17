@@ -4,6 +4,8 @@ import "./static/css/style.css";
 
 import Index from "./pages/Index";
 import Nav from "./pages/components/Nav";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -12,7 +14,15 @@ function App() {
         <Nav />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={""} />
+            <Route path="/" element={<Index />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="*"
+              element={
+                <h2 className="text-center pt-5">This page is unavailable</h2>
+              }
+            />
             <Route
               path="*"
               element={

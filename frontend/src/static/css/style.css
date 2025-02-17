@@ -3,7 +3,13 @@ nav a {
   color: #fff;
 }
 
+a {
+  text-decoration: none;
+}
+
 nav {
+  position: fixed;
+  inset: 0;
   height: 60px;
   background-color: #232323;
 }
@@ -11,10 +17,6 @@ nav {
 .fit-life-logo {
   height: 35px;
   width: 35px;
-}
-
-main {
-  background-color: #f5f5f5;
 }
 
 .mobile-navbar {
@@ -30,4 +32,113 @@ nav ul li a {
 
 nav ul li a:hover {
   color: orangered;
+}
+
+main {
+  margin-top: 60px;
+}
+
+.login-page {
+  height: calc(100vh - 60px);
+  background-image: url(../images/background.jpg);
+  background-size: cover;
+}
+
+.login-module {
+  width: 850px;
+  background-color: transparent;
+  backdrop-filter: blur(15px);
+  color: #fff;
+  box-shadow: 5px 5px 12px #000;
+}
+
+.login-module input {
+  background-color: transparent;
+}
+
+.login-module input:focus {
+  color: #fff;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 992px) {
+  .login-module {
+    width: 400px !important;
+  }
+  .another-side {
+    display: none !important;
+  }
+  .login {
+    width: 100% !important;
+  }
+  .login input {
+    width: 99%;
+  }
+  .mobile-auth {
+    display: grid !important;
+  }
+}
+
+.or-before,
+.or-after {
+  height: 1px;
+  width: 45%;
+  background-color: #232323;
+}
+
+.or {
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.login-module label {
+  background-color: transparent;
+}
+
+.another-side {
+  background-color: #ff4661;
+  color: #fff;
+}
+
+.login {
+  width: 50%;
+}
+
+.login input {
+  border: none;
+  background-color: #f5f5f5;
+  width: 75%;
+}
+
+.login-container {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px 5px 10px rgba(0, 0, 0, 0.3),
+    5px -5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(0, 0, 0, 0.3);
+}
+
+#loading {
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+  opacity: 0.6;
+  position: absolute;
+  z-index: 999;
+  inset: 0;
+}
+
+.whole-container {
+  background-color: #f5f5f5;
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  height: 1.5px;
+  width: 75%;
+  background-color: #232323;
+}
+
+.mobile-auth {
+  display: none;
 }

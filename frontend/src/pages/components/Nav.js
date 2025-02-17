@@ -37,7 +37,7 @@ function Nav() {
 
   return (
     <>
-      <nav className="position-fixed w-100 text-white d-flex align-items-center">
+      <nav className="w-100 text-white d-flex align-items-center">
         <a
           href="/"
           className="ps-4 d-flex align-items-center justify-content-center text-white"
