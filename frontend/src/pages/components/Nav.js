@@ -1,12 +1,27 @@
+import FitLife from "../../static/images/fit-life.png";
 import { useEffect, useState } from "react";
 
 function Nav() {
-  const [nav, setNav] = useState(
-    document.documentElement.clientWidth < 992 ? false : true
+  const navItems = [
+    { title: "Home", icon: "fas fa-house", link: "/" },
+    { title: "About", icon: "fas fa-building", link: "/about" },
+    { title: "Login", icon: "fas fa-user", link: "/login" },
+  ];
+
+  const navDom = () => {
+    return navItems.map((navItem, i) => (
+      <li key={i}>
+        <a href={navItem.link}>{navItem.title}</a>
+      </li>
+    ));
+  };
+
+  const [nav, setNav] = useState(() =>
+    window.innerWidth < 992 ? false : true
   );
 
   const handleResize = () => {
-    if (document.documentElement.clientWidth < 992) {
+    if (window.innerWidth < 992) {
       setNav(false);
     } else {
       setNav(true);
@@ -20,50 +35,36 @@ function Nav() {
     };
   }, []);
 
-  const navItems = [
-    { title: "Home", link: "/", icon: "fas fa-house" },
-    { title: "About", link: "/about", icon: "far fa-address-book" },
-    { title: "Login", link: "/login", icon: "fas fa-right-from-bracket" },
-  ];
-
-  const handleNavIcon = () => {
-    if (nav) {
-      setNav(false);
-    } else {
-      setNav(true);
-    }
-  };
-
   return (
     <>
-      <div
-        className="nav-icon cursor"
-        onClick={handleNavIcon}
-        hidden={document.documentElement.clientWidth < 992 ? false : true}
-      >
-        <i className={nav ? "fas fa-xmark" : "fas fa-bars"}></i>
-      </div>
-      <nav className="h-100" style={{ left: nav ? 0 : "-300px" }}>
-        <h2 className="my-3 mx-3">
-          <a href="/" className="text-white">
-            Fit Life
-          </a>
-        </h2>
+      <nav className="position-fixed w-100 text-white d-flex align-items-center">
+        <a
+          href="/"
+          className="ps-4 d-flex align-items-center justify-content-center text-white"
+        >
+          <img src={FitLife} alt="Fit Life Logo" className="fit-life-logo" />
+          <span className="h2 mt-1 ps-2">Fit Life</span>
+        </a>
 
-        <ul className="list-unstyled mx-3">
-          {navItems.map((nav, i) => (
-            <div key={i} className=" rounded nav-hover">
-              <a href={nav.link}>
-                <li className="nav-list">
-                  <i className={`${nav.icon} pe-3 ps-4`} title={nav.title}></i>
-                  <span className="nav-title" style={{ fontSize: "16px" }}>
-                    {nav.title}
-                  </span>
+        {nav && (
+          <div className="h-100 ms-auto me-5 d-flex align-items-center">
+            <ul className="list-unstyled gap-3 mt-3 d-flex">{navDom()}</ul>
+          </div>
+        )}
+
+        {!nav && (
+          <div className="mobile-navbar position-fixed w-100">
+            <ul className="w-100 h-100 list-unstyled d-flex align-items-center justify-content-evenly">
+              {navItems.map((navItem, i) => (
+                <li key={i}>
+                  <a href={navItem.link}>
+                    <i className={navItem.icon} title={navItem.title}></i>
+                  </a>
                 </li>
-              </a>
-            </div>
-          ))}
-        </ul>
+              ))}
+            </ul>
+          </div>
+        )}
       </nav>
     </>
   );
