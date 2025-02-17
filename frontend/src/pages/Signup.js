@@ -17,13 +17,13 @@ const Signup = () => {
     <>
       <div className="whole-container">
         <div className="container">
-          <div className="w-100 d-flex login-container bg-white rounded">
-            <div className="login ps-5 py-3">
+          <div className="w-100 d-flex login-container">
+            <div className="login ps-5 pe-5 py-3">
               <span className="h3">Sign Up</span>
               <br />
               <span className="text-danger">{msg}</span>
 
-              <form onSubmit={handleForm} className="mt-5">
+              <form onSubmit={handleForm} className="mt-3">
                 <div className="d-flex flex-column">
                   <span className="h6">Email</span>
                   <input
@@ -58,12 +58,9 @@ const Signup = () => {
                   />
                 </div>
 
-                <div>
-                  <button
-                    className="btn btn-danger mt-4 rounded-5 py-3 border-0 w-75"
-                    style={{ backgroundColor: "#fe4773" }}
-                  >
-                    Sign Up
+                <div className="text-center mt-5">
+                  <button className="btn btn-danger rounded-5 py-3 border-0 w-75 auth-btn">
+                    <span className="h6">Sign Up</span>
                   </button>
                 </div>
               </form>
@@ -71,13 +68,13 @@ const Signup = () => {
               <div className="mobile-auth">
                 <div className="line mt-4"></div>
 
-                <div className="mt-4 d-flex flex-column w-75 align-items-center">
+                <div className="mt-4 d-flex flex-column align-items-center">
                   <span>already have an account?</span>
                   <a
                     href="/login"
-                    className="btn my-2 rounded-5 px-4 py-2 border border-3"
+                    className="btn my-2 rounded-5 px-4 py-2 border auth-btn"
                   >
-                    Sign In
+                    <span className="text-white">Sign In</span>
                   </a>
                 </div>
               </div>
@@ -88,9 +85,9 @@ const Signup = () => {
               <span>already have an account?</span>
               <a
                 href="/login"
-                className="btn text-white border rounded-5 my-3 py-2 px-4"
+                className="btn border rounded-5 my-3 py-2 px-4 auth-btn"
               >
-                Sign In
+                <span className="text-white">Sign In</span>
               </a>
             </div>
           </div>
