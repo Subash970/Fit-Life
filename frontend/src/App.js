@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./static/css/style.css";
 
@@ -6,8 +6,12 @@ import Index from "./pages/Index";
 import Nav from "./pages/components/Nav";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Logout from "./pages/apiRequests/Logout";
+import About from "./pages/About";
 
 function App() {
+  const user = localStorage.getItem("user");
+
   return (
     <>
       <main>
@@ -15,18 +19,23 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
             <Route
-              path="*"
-              element={
-                <h2 className="text-center pt-5">This page is unavailable</h2>
-              }
+              path="/signup"
+              element={!user ? <Signup /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/logout"
+              element={user ? <Logout /> : <Navigate to={"/login"} />}
             />
             <Route
               path="*"
               element={
-                <h1 className="text-center">This page is unavailable</h1>
+                <h2 className="text-center pt-5">This page is unavailable</h2>
               }
             />
           </Routes>
