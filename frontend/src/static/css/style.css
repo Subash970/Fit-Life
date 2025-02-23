@@ -16,7 +16,7 @@ nav {
   inset: 0;
   height: 90px;
   background-color: #232323;
-  z-index: 999;
+  z-index: 101;
   padding: 0 150px;
 }
 
@@ -31,7 +31,7 @@ nav {
   background-color: #232323;
   height: 50px;
   position: fixed;
-  z-index: 2;
+  z-index: 101;
 }
 
 nav ul li a {
@@ -132,7 +132,7 @@ main {
   background-color: #f5f5f5;
   opacity: 0.6;
   position: absolute;
-  z-index: 999;
+  z-index: 105;
   inset: 0;
 }
 
@@ -181,23 +181,6 @@ input:focus {
   transform: scale(1.1);
 }
 
-.logout-screen {
-  height: calc(100vh - 90px);
-  width: 100vw;
-  position: absolute;
-  display: grid;
-  place-items: center;
-  background-image: url("../images/gym-fail.jpg");
-  background-size: cover;
-}
-
-.logout-popup {
-  width: 450px;
-  height: 250px;
-  background: linear-gradient(135deg, #232323, #f5f5f5);
-  box-shadow: 10px 10px 5px #232323;
-}
-
 .about-image {
   width: 100%;
   height: 30vh;
@@ -216,4 +199,42 @@ input:focus {
   background-color: #212721;
   color: #fff;
   margin-bottom: -20px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.logout {
+  transition: 0.4s;
+}
+
+.logout:hover {
+  color: orangered;
+}
+
+.logout-screen {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 105;
+  inset: 0 !important;
+  display: grid;
+  place-items: center;
+}
+
+.logout-popup {
+  height: 250px;
+  width: 500px;
+  background-color: #f5f5f5;
+  box-shadow: 10px 10px 5px #232323;
+}
+
+.logout-icon {
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.logout-icon:hover {
+  color: orangered;
 }

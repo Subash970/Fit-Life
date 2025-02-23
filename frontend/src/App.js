@@ -6,7 +6,6 @@ import Index from "./pages/Index";
 import Nav from "./pages/components/Nav";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Logout from "./pages/apiRequests/Logout";
 import About from "./pages/About";
 
 function App() {
@@ -27,10 +26,6 @@ function App() {
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to={"/"} />}
-            />
-            <Route
-              path="/logout"
-              element={user ? <Logout /> : <Navigate to={"/login"} />}
             />
             <Route
               path="*"
