@@ -1,3 +1,8 @@
+body {
+  background-color: #232323;
+  color: #f5f5f5;
+}
+
 nav a {
   text-decoration: none;
   color: #fff;
@@ -15,7 +20,7 @@ nav {
   position: fixed;
   inset: 0;
   height: 90px;
-  background-color: #232323;
+  background-color: #000;
   z-index: 101;
   padding: 0 150px;
 }
@@ -186,7 +191,7 @@ input:focus {
 }
 
 .about-end {
-  background-color: #212721;
+  background-color: #000;
   color: #fff;
   margin-bottom: -20px;
 }
@@ -205,19 +210,20 @@ input:focus {
 
 .logout-screen {
   height: 100vh;
-  width: 100vw;
+  width: 99vw;
   position: absolute;
   z-index: 105;
-  inset: 0 !important;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logout-popup {
   height: 250px;
-  width: 500px;
-  background-color: #f5f5f5;
-  box-shadow: 10px 10px 5px #232323;
+  width: 80%;
+  max-width: 500px;
+  background-color: #232323;
+  box-shadow: 10px 10px 5px #000;
 }
 
 .logout-icon {
@@ -258,4 +264,37 @@ input:focus {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.video-container {
+  top: 0;
+  left: 0;
+  width: 99vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+video {
+  background-size: cover;
+}
+
+.fit-life {
+  font-weight: bolder;
+  font-size: 100px;
+  letter-spacing: 10px;
 }

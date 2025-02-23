@@ -21,19 +21,19 @@ const About = () => {
           <div className="col-lg-6 col-12 p-5">
             <p className="h1 fw-bolder my-3">What's Fit Life?</p>
             <div>
-              <p className="text-muted">
+              <p>
                 Welcome to Fit Life, where we’ve redefined the modern workout
                 with our Transformer Pilates classes. Inspired by the vibrant
                 energy of NYC, our sessions are tailored for the fast-paced
                 London lifestyle.
               </p>
-              <p className="text-muted">
+              <p>
                 Each 50-minute class takes place on our custom-built,
                 resistance-based Transformer machines. We begin with a warm-up,
                 move into a high-intensity full-body workout, and finish with a
                 stretch and mindfulness session to reset both body and mind.
               </p>
-              <p className="text-muted">
+              <p>
                 At the core of Fit Life is the belief that a strong mind fuels a
                 strong body. Embrace a “yes I can” mindset, and the results will
                 follow. Our instructors will guide and motivate you, but the
@@ -52,18 +52,18 @@ const About = () => {
               <br /> Shaped by Innovation.
             </p>
             <div>
-              <p className="text-muted">
+              <p>
                 Energized by endorphins, shaped by innovation, Fit Life is
                 designed to target slow-twitch muscle fibers, enhancing both
                 strength and metabolism.
               </p>
-              <p className="text-muted">
+              <p>
                 While intense, the workout is gentle on the joints,
                 incorporating resistance-based, mindful movements that are
                 intensified to deliver transformational results. We call it
                 Transformer Pilates.
               </p>
-              <p className="text-muted">
+              <p>
                 At the core of Fit Life is the belief that a strong mind-body
                 connection is essential for achieving lasting results and
                 surpassing personal goals. Each session concludes with five
@@ -82,8 +82,9 @@ const About = () => {
       <div className="w-100 about-end text-center">
         <h1 className="pt-3 pb-1">Fit Life</h1>
         <p className="pb-3">
-          Inspired by the Big Apple, on the pulse of the Big Smoke,<br /> we redefine
-          the modern-day workout with our signature Transformer Pilates classes.
+          Inspired by the Big Apple, on the pulse of the Big Smoke,
+          <br /> we redefine the modern-day workout with our signature
+          Transformer Pilates classes.
         </p>
       </div>
     </>

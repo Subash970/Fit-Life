@@ -91,7 +91,7 @@ function Nav() {
 
       {logoutPopup && (
         <div className="logout-screen">
-          <div className="logout-popup rounded border p-3 d-flex flex-column">
+          <div className="logout-popup rounded p-3 d-flex flex-column">
             <p className="py-2 h3">Logout..?</p>
             <p>are you sure, do you wanna Logout..?</p>
             <div className="d-flex justify-content-end gap-3 mt-5">
