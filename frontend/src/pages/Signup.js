@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SignupApi } from "./apiRequests/SignupApi";
+import Loading from "./components/Loading";
 
 const Signup = () => {
   const { loading, msg, Signup } = SignupApi();
@@ -93,7 +94,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-
+      {loading && <Loading />}
     </>
   );
 };
