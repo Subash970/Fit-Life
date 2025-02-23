@@ -46,7 +46,7 @@ const About = () => {
 
       <div className="container my-5">
         <div className="row">
-          <div className="col-lg-6 col-12">
+          <div className="col-lg-6 col-12 p-5">
             <p className="h1 fw-bolder my-3">
               Energized by Endorphins,
               <br /> Shaped by Innovation.

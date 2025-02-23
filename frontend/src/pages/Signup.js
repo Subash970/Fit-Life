@@ -92,9 +92,8 @@ const Signup = () => {
             </div>
           </div>
         </div>
-
-        {loading && <div id="loading"></div>}
       </div>
+
     </>
   );
 };

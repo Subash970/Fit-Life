@@ -79,7 +79,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-      {loading && <div id="loading"></div>}
     </>
   );
 };
