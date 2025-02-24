@@ -298,3 +298,13 @@ video {
   font-size: 100px;
   letter-spacing: 10px;
 }
+
+.workout input:focus {
+  outline: none;
+}
+
+.input-images img {
+  width: 200px;
+  height: 150px;
+  background-size: cover;
+}

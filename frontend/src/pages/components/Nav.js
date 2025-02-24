@@ -14,6 +14,11 @@ function Nav() {
   const navItems = [
     { title: "Home", icon: "fas fa-house", link: "/" },
     { title: "About", icon: "fas fa-building", link: "/about" },
+    user && {
+      title: "Dashboard",
+      icon: "far fa-calendar-days",
+      link: "/dashboard",
+    },
     !user && { title: "Login", icon: "fas fa-user", link: "/login" },
   ].filter(Boolean);
 
