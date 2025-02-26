@@ -308,3 +308,16 @@ video {
   height: 150px;
   background-size: cover;
 }
+
+.workout_img {
+  width: 150px;
+  height: 100px;
+  background-size: cover;
+}
+
+.table tr td {
+  background-color: #232323;
+  color: #fff;
+  border: 2px solid #fff;
+  text-align: center;
+}

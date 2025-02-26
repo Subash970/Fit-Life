@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const controller = require("./controllers/controller.js");
 const authController = require("./controllers/authController.js");
+const adminController = require("./controllers/adminController/adminController.js");
 const requireAuth = require("./middleware/middleware.js");
 
 const app = express();
@@ -40,3 +41,6 @@ app.get("/", controller.Home);
 //auth routes
 app.post("/users/signup", authController.Signup);
 app.post("/users/login", authController.Login);
+
+//admin routes
+app.post("/admin/addcredential", requireAuth, adminController.addWorkout);
