@@ -58,18 +58,45 @@ const AddCredentials = () => {
 
   //api request
 
+  const [isChecked, setIsChecked] = useState(false);
+  const [disabledInput, setDisabledInput] = useState(true);
+
+  const handleCheckboxChange = () => {
+    if (!isChecked) {
+      setIsChecked(true);
+      setDisabledInput(false);
+    } else {
+      setIsChecked(false);
+      setDisabledInput(true);
+    }
+  };
+
+  //day of the workout retrival
+
   return (
     <div className="container py-5">
       <h2>Add Credentials of User's Workout</h2>
       <p className="my-5 text-danger">{msg}</p>
       <form className="mt-5" onSubmit={handleFormSubmit}>
-        <input
-          className="form-control ps-4 py-3"
-          placeholder="Day of the workout plan"
-          type="number"
-          value={day}
-          onChange={(e) => setDay(e.target.value)}
-        />
+        <div>
+          <input
+            className="form-control ps-4 py-3"
+            placeholder="Day of the workout plan"
+            type="number"
+            value={day}
+            onChange={(e) => setDay(e.target.value)}
+            disabled={disabledInput}
+          />
+          <div className="d-flex align-items-center ps-4 pt-4 gap-2">
+            <input
+              type="checkbox"
+              id="checkbox"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            />
+            <label htmlFor="checkbox">Edit Day of the Workout</label>
+          </div>
+        </div>
 
         <h3 className="mt-5">Workout Plans</h3>
         <div className="mt-5 d-flex flex-column gap-4">
@@ -154,7 +181,7 @@ const AddCredentials = () => {
           </div>
         )}
         <div className="my-5">
-          <button className="btn btn-primary w-50">Add Workout</button>
+          <button className="btn btn-primary w-50">Submit Workout Plan</button>
         </div>
       </form>
       {loading && <div id="loading"></div>}

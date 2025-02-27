@@ -5,13 +5,13 @@ export const AdminApiRequest = () => {
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
 
-  const WorkoutApi = async (day, data) => {
+  const WorkoutApi = async (day, workouts) => {
     setLoading(true);
     setMsg("");
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API}/admin/addcredential`,
-        { day, data },
+        { day, workouts },
         { headers: { authorization: localStorage.getItem("token") } }
       );
       setMsg(response.data.msg);

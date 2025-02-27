@@ -44,3 +44,4 @@ app.post("/users/login", authController.Login);
 
 //admin routes
 app.post("/admin/addcredential", requireAuth, adminController.addWorkout);
+app.get("admin/day", requireAuth, adminController.day);
