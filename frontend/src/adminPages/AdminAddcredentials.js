@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AdminApiRequest } from "./apiRequest/apiRequest";
 
 const AddCredentials = () => {
+  const { loading, msg, WorkoutApi, WorkoutDayApi, workoutDay } =
+    AdminApiRequest();
+
   const [workouts, setWorkouts] = useState([]);
 
   const [day, setDay] = useState("");
@@ -49,7 +52,6 @@ const AddCredentials = () => {
   };
 
   //api request
-  const { loading, msg, WorkoutApi } = AdminApiRequest();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -72,6 +74,13 @@ const AddCredentials = () => {
   };
 
   //day of the workout retrival
+  useEffect(() => {
+    WorkoutDayApi();
+  }, [WorkoutDayApi]);
+
+  useEffect(() => {
+    if (workoutDay) setDay(workoutDay);
+  }, [workoutDay]);
 
   return (
     <div className="container py-5">

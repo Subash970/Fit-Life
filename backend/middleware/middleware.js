@@ -17,7 +17,8 @@ const requireAuth = async (req, res, next) => {
       return res.status(401).json({ msg: "user must be logged in" });
     }
 
-    req.user = user;
+    req.user = user.name;
+    req.email = user.email;
     next();
   } catch (err) {
     res.status(401).json({ msg: "an error occured. please try again" });
