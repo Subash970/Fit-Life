@@ -2,24 +2,25 @@ import axios from "axios";
 import { useState } from "react";
 
 export const SignupApi = () => {
+  console.log(SERVER_URL);
+
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
 
   const Signup = async (email, name, password) => {
     if (!email || !name || !password) {
       setMsg("Email , Name and Password are mandatory");
+      return;
     }
     setLoading(true);
+    setMsg("");
 
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API}/users/signup`,
-        {
-          email,
-          name,
-          password,
-        }
-      );
+      const response = await axios.post(`/api/users/signup`, {
+        email,
+        name,
+        password,
+      });
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", response.data.user);
       window.location.href = "/";

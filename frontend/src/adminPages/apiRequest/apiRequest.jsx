@@ -12,7 +12,7 @@ export const AdminApiRequest = () => {
     setMsg("");
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API}/admin/addcredential`,
+        `/api/admin/addcredential`,
         { day, workouts },
         { headers: { authorization: localStorage.getItem("token") } }
       );
@@ -29,10 +29,9 @@ export const AdminApiRequest = () => {
     setMsg("");
     setLoading(true);
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API}/admin/day`,
-        { headers: { authorization: localStorage.getItem("token") } }
-      );
+      const response = await axios.get(`/api/admin/day`, {
+        headers: { authorization: localStorage.getItem("token") },
+      });
       setWorkoutDay(response.data.workoutDay);
     } catch (err) {
       setMsg(err.response?.data?.msg || "an error occured. please try again");

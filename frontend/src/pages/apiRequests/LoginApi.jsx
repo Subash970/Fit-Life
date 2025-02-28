@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 export const LoginApi = () => {
+
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
 
@@ -12,10 +13,10 @@ export const LoginApi = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API}/users/login`,
-        { email, password }
-      );
+      const response = await axios.post(`/api/users/login`, {
+        email,
+        password,
+      });
       localStorage.setItem("user", response.data.user);
       localStorage.setItem("token", response.data.token);
       window.location.href = "/";

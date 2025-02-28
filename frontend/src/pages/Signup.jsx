@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { SignupApi } from "./apiRequests/SignupApi";
 import Loading from "./components/Loading";
+import { SignupApi } from "./apiRequests/SignupApi";
 
 const Signup = () => {
   const { loading, msg, Signup } = SignupApi();

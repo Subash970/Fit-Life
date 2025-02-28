@@ -39,9 +39,9 @@ MongoDB();
 app.get("/", controller.Home);
 
 //auth routes
-app.post("/users/signup", authController.Signup);
-app.post("/users/login", authController.Login);
+app.post("/api/users/signup", authController.Signup);
+app.post("/api/users/login", authController.Login);
 
 //admin routes
-app.post("/admin/addcredential", requireAuth, adminController.addWorkout);
-app.get("/admin/day", adminController.day);
+app.post("/api/admin/addcredential", requireAuth, adminController.addWorkout);
+app.get("/api/admin/day", adminController.day);

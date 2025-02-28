@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AdminApiRequest } from "./apiRequest/apiRequest";
+import Loading from "../pages/components/Loading";
 
 const AddCredentials = () => {
   const { loading, msg, WorkoutApi, WorkoutDayApi, workoutDay } =
@@ -193,7 +194,7 @@ const AddCredentials = () => {
           <button className="btn btn-primary w-50">Submit Workout Plan</button>
         </div>
       </form>
-      {loading && <div id="loading"></div>}
+      {loading && <Loading />}
     </div>
   );
 };
