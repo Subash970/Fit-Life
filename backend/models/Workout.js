@@ -4,6 +4,7 @@ const workoutSchema = new mongoose.Schema({
   day: {
     type: Number,
     unique: true,
+    required: true,
     min: 1,
     max: 90,
   },

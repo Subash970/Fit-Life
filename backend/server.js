@@ -6,7 +6,10 @@ const cors = require("cors");
 const controller = require("./controllers/controller.js");
 const authController = require("./controllers/authController.js");
 const adminController = require("./controllers/adminController/adminController.js");
-const requireAuth = require("./middleware/middleware.js");
+
+//middlewares
+const requireAuth = require("./middleware/middleware.js");``
+const upload = require("./middleware/multer.js");
 
 const app = express();
 
@@ -26,9 +29,7 @@ const MongoDB = async () => {
     console.log("Connection established with MongoDB");
   } catch (err) {
     console.log("Retrying in 5 seconds");
-    setTimeout(() => {
-      MongoDB();
-    }, 5000);
+    setTimeout(MongoDB, 5000);
   }
 };
 
@@ -43,5 +44,10 @@ app.post("/api/users/signup", authController.Signup);
 app.post("/api/users/login", authController.Login);
 
 //admin routes
-app.post("/api/admin/addcredential", requireAuth, adminController.addWorkout);
-app.get("/api/admin/day", adminController.day);
+app.post(
+  "/api/admin/addcredential",
+  upload.array("workoutImg", 10),
+  requireAuth,
+  adminController.addWorkout
+);
+app.get("/api/admin/day", requireAuth, adminController.day);

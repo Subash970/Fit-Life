@@ -3,7 +3,7 @@ import { AdminApiRequest } from "./apiRequest/apiRequest";
 import Loading from "../pages/components/Loading";
 
 const AddCredentials = () => {
-  const { loading, msg, WorkoutApi, WorkoutDayApi, workoutDay } =
+  const { loading, msg, WorkoutApi, WorkoutDayApi, workoutDay, sucessMsg } =
     AdminApiRequest();
 
   const [workouts, setWorkouts] = useState([]);
@@ -20,8 +20,7 @@ const AddCredentials = () => {
     setPreviewImg(URL.createObjectURL(file));
     if (file) {
       try {
-        const base64 = await convertBase64(file);
-        setWorkoutImg(base64);
+        setWorkoutImg(file);
       } catch (err) {
         console.log(err);
       }
@@ -57,6 +56,7 @@ const AddCredentials = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     WorkoutApi(day, workouts);
+    clearForm();
   };
 
   //api request
@@ -83,10 +83,15 @@ const AddCredentials = () => {
     if (workoutDay) setDay(workoutDay);
   }, [workoutDay]);
 
+  const handleWorkoutRemove = (index) => {
+    setWorkouts((prevWorkouts) => prevWorkouts.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="container py-5">
       <h2>Add Credentials of User's Workout</h2>
       <p className="my-5 text-danger">{msg}</p>
+      <p className="my-5 text-success">{sucessMsg}</p>
       <form className="mt-5" onSubmit={handleFormSubmit}>
         <div>
           <input
@@ -167,6 +172,7 @@ const AddCredentials = () => {
                   <td>Rep</td>
                   <td>Workout Description</td>
                   <td>Image</td>
+                  <td>Remove Workout</td>
                 </tr>
               </thead>
               <tbody>
@@ -184,6 +190,14 @@ const AddCredentials = () => {
                         />
                       )}
                     </td>
+                    <td>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => handleWorkoutRemove(index)}
+                      >
+                        Remove
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -200,18 +214,3 @@ const AddCredentials = () => {
 };
 
 export default AddCredentials;
-
-const convertBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-};

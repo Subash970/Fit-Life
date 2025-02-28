@@ -2,8 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 
 export const SignupApi = () => {
-  console.log(SERVER_URL);
-
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
 
