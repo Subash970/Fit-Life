@@ -77,7 +77,7 @@ const AddCredentials = () => {
   //day of the workout retrival
   useEffect(() => {
     WorkoutDayApi();
-  }, [WorkoutDayApi]);
+  }, []);
 
   useEffect(() => {
     if (workoutDay) setDay(workoutDay);

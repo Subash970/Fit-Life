@@ -210,12 +210,15 @@ input:focus {
 
 .logout-screen {
   height: 100vh;
-  width: 99vw;
-  position: absolute;
+  width: 100vw;
+  inset: 0;
+  position: fixed;
   z-index: 105;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(35, 35, 35, 0.3);
+  backdrop-filter: blur(8px);
 }
 
 .logout-popup {
@@ -238,9 +241,9 @@ input:focus {
 .loading-screen {
   height: 100vh;
   width: 100vw;
-  inset: 0px;
+  inset: 0;
   background-color: #000;
-  position: absolute;
+  position: fixed;
   z-index: 105;
   display: grid;
   place-items: center;
