@@ -13,34 +13,19 @@ export const AdminApiRequest = () => {
     setMsg("");
     setSucessMsg("");
 
-    const formData = new FormData();
-
-    formData.append("day", day);
-
-    workouts.map((workout, index) => {
-      formData.append(`workouts[${index}][workoutName]`, workout.workoutName);
-      formData.append(
-        `workouts[${index}][workoutDescription]`,
-        workout.workoutDescription
-      );
-      formData.append(`workouts[${index}][workoutRep]`, workout.workoutRep);
-      formData.append(`workoutImg`, workout.workoutImg);
-    });
-
     try {
-      const response = await axios.post(
-        `/api/admin/addcredential`,
-        formData,
+      console.log("Day :", day);
+      console.log(workouts);
 
+      const response = await axios.post(
+        "/api/admin/addcredential",
         {
-          headers: {
-            authorization: localStorage.getItem("token"),
-            "Content-Type": "multipart/form-data",
-          },
-        }
+          day,
+          workouts,
+        },
+        { headers: { authorization: localStorage.getItem("token") } }
       );
       setSucessMsg(response.data.msg);
-      await WorkoutDayApi();
     } catch (err) {
       setMsg(err.response?.data?.msg || "an error occured. please try again");
     } finally {

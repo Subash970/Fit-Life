@@ -8,8 +8,7 @@ const authController = require("./controllers/authController.js");
 const adminController = require("./controllers/adminController/adminController.js");
 
 //middlewares
-const requireAuth = require("./middleware/middleware.js");``
-const upload = require("./middleware/multer.js");
+const requireAuth = require("./middleware/middleware.js");
 
 const app = express();
 
@@ -37,17 +36,13 @@ MongoDB();
 
 //app routes
 
-app.get("/", controller.Home);
-
 //auth routes
 app.post("/api/users/signup", authController.Signup);
 app.post("/api/users/login", authController.Login);
 
 //admin routes
-app.post(
-  "/api/admin/addcredential",
-  upload.array("workoutImg", 10),
-  requireAuth,
-  adminController.addWorkout
-);
+app.post("/api/admin/addcredential", requireAuth, adminController.addWorkout);
 app.get("/api/admin/day", requireAuth, adminController.day);
+
+//workout routes
+app.get("/api/workouts", requireAuth, controller.GetWorkouts);

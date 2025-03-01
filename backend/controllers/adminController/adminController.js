@@ -30,38 +30,12 @@ const addWorkout = async (req, res) => {
   }
 
   try {
-    const { day } = req.body;
-    let workouts = [];
+    const { day, workouts } = req.body;
 
-    if (Array.isArray(req.body["workouts[0][workoutName]"])) {
-      // Handling multiple workouts
-      req.body["workouts[0][workoutName]"].forEach((_, index) => {
-        workouts.push({
-          workoutName: req.body[`workouts[${index}][workoutName]`],
-          workoutDescription:
-            req.body[`workouts[${index}][workoutDescription]`],
-          workoutRep: req.body[`workouts[${index}][workoutRep]`],
-          workoutImg: req.files[index]
-            ? `/uploads/${req.files[index].filename}`
-            : null,
-        });
-      });
-    } else {
-      // Handling a single workout
-      workouts.push({
-        workoutName: req.body["workouts[0][workoutName]"],
-        workoutDescription: req.body["workouts[0][workoutDescription]"],
-        workoutRep: req.body["workouts[0][workoutRep]"],
-        workoutImg: req.files[0] ? `/uploads/${req.files[0].filename}` : null,
-      });
-    }
-
-    await Workouts.create({ day, workouts });
-
-    res.json({ msg: "Workout Plan Added Successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ msg: "Server Error" });
+    console.log(day);
+    console.log(workouts);
+  } catch (err) {
+    res.status(400).json({ msg: "an error occured. please try again , fuck" });
   }
 };
 

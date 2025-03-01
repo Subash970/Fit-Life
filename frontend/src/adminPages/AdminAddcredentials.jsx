@@ -57,6 +57,7 @@ const AddCredentials = () => {
     e.preventDefault();
     WorkoutApi(day, workouts);
     clearForm();
+    setWorkouts([]);
   };
 
   //api request
