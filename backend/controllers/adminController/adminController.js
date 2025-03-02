@@ -16,7 +16,7 @@ const day = async (req, res) => {
     const workoutDay = workout ? workout.day + 1 : 1;
     res.status(200).json({ workoutDay });
   } catch (err) {
-    res.status(400).json({ msg: "an error occured. please try again" });
+    res.status(400).json({ msg: err.message });
   }
 };
 
@@ -39,6 +39,12 @@ const addWorkout = async (req, res) => {
       !req.files
     ) {
       return res.status(400).json({ msg: "Please fill all the fields" });
+    }
+
+    if (day < 1 || day > 90) {
+      return res
+        .status(400)
+        .json({ msg: "Day of the workout is'nt in the range" });
     }
 
     // Ensure data is in array format
@@ -73,7 +79,7 @@ const addWorkout = async (req, res) => {
 
     res.status(200).json({ msg: `Workout Detail's added for ${workout.day}` });
   } catch (err) {
-    res.status(403).json({ msg: "an error occured. please try again" });
+    res.status(403).json({ msg: err.message });
   }
 };
 

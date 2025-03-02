@@ -21,7 +21,7 @@ const requireAuth = async (req, res, next) => {
     req.email = user.email;
     next();
   } catch (err) {
-    res.status(401).json({ msg: "an error occured. please try again" });
+    res.status(401).json({ msg: err.message });
   }
 };
 

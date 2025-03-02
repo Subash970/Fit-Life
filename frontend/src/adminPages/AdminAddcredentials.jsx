@@ -56,6 +56,7 @@ const AddCredentials = () => {
     WorkoutApi(day, workouts);
     clearForm();
     setWorkouts([]);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   //api request

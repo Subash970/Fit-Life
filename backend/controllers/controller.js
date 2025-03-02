@@ -28,7 +28,7 @@ const GetWorkouts = async (req, res) => {
 
     res.status(200).json({ workouts });
   } catch (err) {
-    res.status(400).json({ msg: "an error occured. please try again" });
+    res.status(400).json({ msg: err.message });
   }
 };
 
