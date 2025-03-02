@@ -31,24 +31,49 @@ const addWorkout = async (req, res) => {
 
   try {
     const { day, workoutNames, workoutDescriptions, workoutReps } = req.body;
-    if (!day || !workoutNames || !workoutDescriptions || !workoutReps) {
+    if (
+      !day ||
+      !workoutNames ||
+      !workoutDescriptions ||
+      !workoutReps ||
+      !req.files
+    ) {
       return res.status(400).json({ msg: "Please fill all the fields" });
     }
 
+    // Ensure data is in array format
+    const namesArray = Array.isArray(workoutNames)
+      ? workoutNames
+      : [workoutNames];
+    const descriptionsArray = Array.isArray(workoutDescriptions)
+      ? workoutDescriptions
+      : [workoutDescriptions];
+    const repsArray = Array.isArray(workoutReps) ? workoutReps : [workoutReps];
+
+    // Validate that all arrays are of the same length
+    if (
+      namesArray.length !== descriptionsArray.length ||
+      namesArray.length !== repsArray.length ||
+      namesArray.length !== req.files.length
+    ) {
+      return res
+        .status(400)
+        .json({ msg: "Mismatched workout details. Please check your input." });
+    }
+
+    // Map data correctly
     const workouts = req.files.map((file, i) => ({
-      workoutName: workoutNames[i],
-      workoutDescription: workoutDescriptions[i],
-      workoutRep: workoutReps[i],
+      workoutName: namesArray[i],
+      workoutDescription: descriptionsArray[i],
+      workoutRep: repsArray[i],
       workoutImg: `/uploads/${file.filename}`,
     }));
-
-    console.log(workouts);
 
     const workout = await Workouts.create({ day, workouts });
 
     res.status(200).json({ msg: `Workout Detail's added for ${workout.day}` });
   } catch (err) {
-    res.status(400).json({ msg: "an error occured. please try again" });
+    res.status(403).json({ msg: "an error occured. please try again" });
   }
 };
 

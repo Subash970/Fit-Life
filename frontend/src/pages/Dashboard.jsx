@@ -1,67 +1,68 @@
-import { useState } from "react";
-import Image from "../static/images/gym.jpg";
+import Loading from "./components/Loading";
+import { getWorkoutsApi } from "./apiRequests/getWorkouts";
+import { useEffect } from "react";
 
 const Dashboard = () => {
-  const [soldier, setSoldier] = useState("Soldier");
+  const { getWorkouts, loading, msg, workouts } = getWorkoutsApi();
 
-  const [rep, setRep] = useState(5);
+  useEffect(() => {
+    getWorkouts();
+  }, []);
 
   return (
     <>
       <div className="container pt-5">
         <div>
-          <p className="h1 text-center">Welcome {soldier}!</p>
+          <p className="my-5 text-danger">{msg}</p>
+
+          {workouts?.day && (
+            <p className="h3 text-center">Day {workouts.day} Workout plans</p>
+          )}
         </div>
 
         <div className="workout_detail_container container mt-5">
-          <div className="row py-5">
-            <div className="col-12 col-lg-6">
-              <img
-                src={Image}
-                alt="workout"
-                className="w-100 h-100 rounded"
-                style={{ backgroundSize: "cover", height: "350px" }}
-              />
-            </div>
-            <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center flex-column gap-4 dashboard-text rounded">
-              <p className="h3 fw-bolder">Workout Name</p>
-              <p className="px-5">
-                A good workout balances strength, endurance, and flexibility.
-                Start with a warm-up to prepare your muscles and prevent
-                injuries. Incorporate a mix of cardio, strength training, and
-                core exercises. Focus on proper form and gradually increase
-                intensity for better results. End with a cool-down and
-                stretching to aid recovery and reduce soreness.
-              </p>
-              <p className="fw-bolder">Rep : {rep}</p>
-            </div>
-          </div>
-
-          <div className="row py-5">
-            <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center flex-column gap-4 dashboard-text rounded">
-              <p className="h3 fw-bolder">Workout Name</p>
-              <p className="px-5">
-                A good workout balances strength, endurance, and flexibility.
-                Start with a warm-up to prepare your muscles and prevent
-                injuries. Incorporate a mix of cardio, strength training, and
-                core exercises. Focus on proper form and gradually increase
-                intensity for better results. End with a cool-down and
-                stretching to aid recovery and reduce soreness.
-              </p>
-              <p className="fw-bolder">Rep : {rep}</p>
-            </div>
-
-            <div className="col-12 col-lg-6">
-              <img
-                src={Image}
-                alt="workout"
-                className="w-100 h-100 rounded"
-                style={{ backgroundSize: "cover", height: "350px" }}
-              />
-            </div>
-          </div>
+          {workouts?.workouts?.length > 0 &&
+            workouts.workouts.map((workout, i) => (
+              <div className="row py-5" key={i}>
+                {i % 2 == 0 ? (
+                  <>
+                    <div className="col-12 col-lg-6">
+                      <img
+                        src={import.meta.env.VITE_APP_API + workout.workoutImg}
+                        alt="workout"
+                        className="w-100 h-100 rounded"
+                        style={{ backgroundSize: "cover", height: "350px" }}
+                      />
+                    </div>
+                    <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center flex-column gap-4 dashboard-text rounded">
+                      <p className="h3 fw-bolder">{workout.workoutName}</p>
+                      <p className="px-5">{workout.workoutDescription}</p>
+                      <p className="fw-bolder">Rep : {workout.workoutRep}</p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center flex-column gap-4 dashboard-text rounded">
+                      <p className="h3 fw-bolder">{workout.workoutName}</p>
+                      <p className="px-5">{workout.workoutDescription}</p>
+                      <p className="fw-bolder">Rep : {workout.workoutRep}</p>
+                    </div>
+                    <div className="col-12 col-lg-6">
+                      <img
+                        src={import.meta.env.VITE_APP_API + workout.workoutImg}
+                        alt="workout"
+                        className="w-100 h-100 rounded"
+                        style={{ backgroundSize: "cover", height: "350px" }}
+                      />
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
         </div>
       </div>
+
+      {loading && <Loading />}
     </>
   );
 };

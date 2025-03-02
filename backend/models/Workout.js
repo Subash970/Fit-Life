@@ -12,7 +12,7 @@ const workoutSchema = new mongoose.Schema({
     {
       workoutName: String,
       workoutDescription: String,
-      WorkoutRep: String,
+      workoutRep: Number,
       workoutImg: String,
     },
   ],

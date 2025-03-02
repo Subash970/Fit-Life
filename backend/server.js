@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const upload = require("./middleware/multer.js");
+const path = require("path");
 
 const controller = require("./controllers/controller.js");
 const authController = require("./controllers/authController.js");
@@ -16,6 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static("uploads"));
 
 //Environment variables
 dbURI = process.env.dbURI;
@@ -36,6 +38,9 @@ const MongoDB = async () => {
 MongoDB();
 
 //app routes
+app.get("/", (req, res) => {
+  res.json({ msg: "server works" });
+});
 
 //auth routes
 app.post("/api/users/signup", authController.Signup);

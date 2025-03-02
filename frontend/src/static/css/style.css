@@ -33,7 +33,7 @@ nav {
 .mobile-navbar {
   bottom: 0px;
   left: 0px;
-  background-color: #232323;
+  background-color: #000;
   height: 50px;
   position: fixed;
   z-index: 101;

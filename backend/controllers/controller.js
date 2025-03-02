@@ -20,6 +20,12 @@ const GetWorkouts = async (req, res) => {
       day: daysPassesd > 0 ? daysPassesd : 1,
     });
 
+    if (!workouts) {
+      return res
+        .status(400)
+        .json({ msg: "Workout not found or needed to be added" });
+    }
+
     res.status(200).json({ workouts });
   } catch (err) {
     res.status(400).json({ msg: "an error occured. please try again" });
