@@ -17,14 +17,12 @@ const AddCredentials = () => {
 
   const handleImg = async (e) => {
     const file = e.target.files[0];
-    setPreviewImg(URL.createObjectURL(file));
-    if (file) {
-      try {
-        setWorkoutImg(file);
-      } catch (err) {
-        console.log(err);
-      }
+    if (!file) {
+      return console.log("Please add an Image");
     }
+
+    setPreviewImg(URL.createObjectURL(file));
+    setWorkoutImg(file);
   };
 
   const clearForm = () => {

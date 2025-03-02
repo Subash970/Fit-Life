@@ -14,17 +14,20 @@ export const AdminApiRequest = () => {
     setSucessMsg("");
 
     try {
-      console.log("Day :", day);
-      console.log(workouts);
+      const formData = new FormData();
 
-      const response = await axios.post(
-        "/api/admin/addcredential",
-        {
-          day,
-          workouts,
-        },
-        { headers: { authorization: localStorage.getItem("token") } }
-      );
+      formData.append("day", day);
+
+      workouts.forEach((workout, i) => {
+        formData.append(`workoutNames`, workout.workoutName);
+        formData.append(`workoutDescriptions`, workout.workoutDescription);
+        formData.append(`workoutReps`, workout.workoutRep);
+        formData.append(`files`, workout.workoutImg);
+      });
+
+      const response = await axios.post("/api/admin/addcredential", formData, {
+        headers: { authorization: localStorage.getItem("token") },
+      });
       setSucessMsg(response.data.msg);
     } catch (err) {
       setMsg(err.response?.data?.msg || "an error occured. please try again");

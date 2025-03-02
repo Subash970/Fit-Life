@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const upload = require("./middleware/multer.js");
 
 const controller = require("./controllers/controller.js");
 const authController = require("./controllers/authController.js");
@@ -41,7 +42,12 @@ app.post("/api/users/signup", authController.Signup);
 app.post("/api/users/login", authController.Login);
 
 //admin routes
-app.post("/api/admin/addcredential", requireAuth, adminController.addWorkout);
+app.post(
+  "/api/admin/addcredential",
+  upload.array("files"),
+  requireAuth,
+  adminController.addWorkout
+);
 app.get("/api/admin/day", requireAuth, adminController.day);
 
 //workout routes
