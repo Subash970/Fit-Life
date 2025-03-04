@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/api": {
-        target: "https://fit-life-backend.onrender.com",
+        target: "http://192.168.31.28:8000",
         changeOrigin: true,
       },
     },
