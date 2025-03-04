@@ -11,13 +11,18 @@ const GetWorkouts = async (req, res) => {
       return res.status(400).json({ msg: "User not found" });
     }
 
-    // const createdAt = new Date(user.createdAt);
-    const createdAt = new Date("2025-01-01T03:02:56.523Z");
+    const createdAt = new Date(user.createdAt);
     const now = new Date();
 
     // Calculate days passed
     const daysPassed =
-      Math.floor((now - createdAt) / (1000 * 60 * 60 * 24)) + 2;
+      Math.floor((now - createdAt) / (1000 * 60 * 60 * 24)) + 1;
+
+    if (daysPassed < 1) {
+      return res
+        .status(400)
+        .json({ msg: "an error occured. please try again" });
+    }
 
     const workouts = await Workouts.findOne({
       day: daysPassed,
