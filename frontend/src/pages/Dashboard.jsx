@@ -38,6 +38,7 @@ const Dashboard = () => {
                       <p className="h3 fw-bolder">{workout.workoutName}</p>
                       <p className="px-5">{workout.workoutDescription}</p>
                       <p className="fw-bolder">Rep : {workout.workoutRep}</p>
+                      <p className="fw-bolder">Set : {workout.workoutSet}</p>
                     </div>
                   </>
                 ) : (
@@ -46,6 +47,7 @@ const Dashboard = () => {
                       <p className="h3 fw-bolder">{workout.workoutName}</p>
                       <p className="px-5">{workout.workoutDescription}</p>
                       <p className="fw-bolder">Rep : {workout.workoutRep}</p>
+                      <p className="fw-bolder">Set : {workout.workoutSet}</p>
                     </div>
                     <div className="col-12 col-lg-6">
                       <img

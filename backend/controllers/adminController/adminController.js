@@ -30,13 +30,15 @@ const addWorkout = async (req, res) => {
   }
 
   try {
-    const { day, workoutNames, workoutDescriptions, workoutReps } = req.body;
+    const { day, workoutNames, workoutDescriptions, workoutReps, workoutSets } =
+      req.body;
     if (
       !day ||
       !workoutNames ||
       !workoutDescriptions ||
       !workoutReps ||
-      !req.files
+      !req.files ||
+      !workoutSets
     ) {
       return res.status(400).json({ msg: "Please fill all the fields" });
     }
@@ -55,6 +57,7 @@ const addWorkout = async (req, res) => {
       ? workoutDescriptions
       : [workoutDescriptions];
     const repsArray = Array.isArray(workoutReps) ? workoutReps : [workoutReps];
+    const SetsArray = Array.isArray(workoutSets) ? workoutSets : [workoutSets];
 
     // Validate that all arrays are of the same length
     if (
@@ -72,6 +75,7 @@ const addWorkout = async (req, res) => {
       workoutName: namesArray[i],
       workoutDescription: descriptionsArray[i],
       workoutRep: repsArray[i],
+      workoutSet: SetsArray[i],
       workoutImg: `/uploads/${file.filename}`,
     }));
 

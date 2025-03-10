@@ -12,6 +12,7 @@ const AddCredentials = () => {
   const [workoutName, setWorkoutName] = useState("");
   const [workoutDescription, setWorkoutDescription] = useState("");
   const [workoutRep, setWorkoutRep] = useState("");
+  const [workoutSet, setWorkoutSet] = useState("");
   const [workoutImg, setWorkoutImg] = useState("");
   const [previewImg, setPreviewImg] = useState(null);
 
@@ -33,7 +34,13 @@ const AddCredentials = () => {
   };
 
   const handleAddWorkout = () => {
-    if (!workoutName || !workoutDescription || !workoutRep || !workoutImg) {
+    if (
+      !workoutName ||
+      !workoutDescription ||
+      !workoutRep ||
+      !workoutImg ||
+      !workoutSet
+    ) {
       alert("add the data to the input's");
     } else {
       const newWorkout = {
@@ -42,6 +49,7 @@ const AddCredentials = () => {
         workoutRep,
         workoutImg,
         previewImg,
+        workoutSet,
       };
 
       setWorkouts([...workouts, newWorkout]);
@@ -133,6 +141,13 @@ const AddCredentials = () => {
             type="number"
             value={workoutRep}
             onChange={(e) => setWorkoutRep(e.target.value)}
+          />
+          <input
+            className="form-control py-3 ps-4"
+            placeholder="Set"
+            type="number"
+            value={workoutSet}
+            onChange={(e) => setWorkoutSet(e.target.value)}
           />
           <div>
             <input

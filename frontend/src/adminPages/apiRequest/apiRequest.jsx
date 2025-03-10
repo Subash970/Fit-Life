@@ -22,6 +22,7 @@ export const AdminApiRequest = () => {
         formData.append(`workoutNames`, workout.workoutName);
         formData.append(`workoutDescriptions`, workout.workoutDescription);
         formData.append(`workoutReps`, workout.workoutRep);
+        formData.append(`workoutSets`, workout.workoutSet);
         formData.append(`files`, workout.workoutImg);
       });
 
