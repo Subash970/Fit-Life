@@ -31,6 +31,7 @@ const AddCredentials = () => {
     setWorkoutDescription("");
     setWorkoutRep("");
     setWorkoutImg("");
+    setWorkoutSet("");
   };
 
   const handleAddWorkout = () => {
